@@ -1,14 +1,14 @@
-'use strict';
 
-process.env.BABEL_ENV = 'production';
-process.env.NODE_ENV = 'production';
 
-const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const paths = require('./paths');
+process.env.BABEL_ENV = 'production'
+process.env.NODE_ENV = 'production'
 
-const shouldUseSourceMap = false;
+const autoprefixer = require('autoprefixer')
+const webpack = require('webpack')
+const eslintFormatter = require('react-dev-utils/eslintFormatter')
+const paths = require('./paths')
+
+const shouldUseSourceMap = false
 
 module.exports = {
   // Don't attempt to continue if there are any errors.
@@ -22,7 +22,7 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
-    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx']
   },
   module: {
     strictExportPresence: true,
@@ -34,12 +34,12 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
+              eslintPath: require.resolve('eslint')
             },
-            loader: require.resolve('eslint-loader'),
-          },
+            loader: require.resolve('eslint-loader')
+          }
         ],
-        include: paths.appLibSrc,
+        include: paths.appLibSrc
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -53,8 +53,8 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: '[name].[ext]',
-            },
+              name: '[name].[ext]'
+            }
           },
           // Process JS with Babel.
           {
@@ -62,8 +62,8 @@ module.exports = {
             include: paths.appLibSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              compact: true,
-            },
+              compact: true
+            }
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
@@ -80,32 +80,37 @@ module.exports = {
           // in the main CSS file.
           {
             test: /\.(css|scss)$/,
-            use: [{
-              loader: "style-loader" // creates style nodes from JS strings
-            }, {
-              loader: "css-loader" // translates CSS into CommonJS
-            }, {
-              loader: "sass-loader" // compiles Sass to CSS
-            }, {
-              loader: require.resolve('postcss-loader'),
-              options: {
-                // Necessary for external CSS imports to work
-                // https://github.com/facebookincubator/create-react-app/issues/2677
-                ident: 'postcss',
-                plugins: () => [
-                  require('postcss-flexbugs-fixes'),
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ],
-                    flexbox: 'no-2009',
-                  }),
-                ],
+            use: [
+              {
+                loader: 'style-loader' // creates style nodes from JS strings
+              },
+              {
+                loader: 'css-loader' // translates CSS into CommonJS
+              },
+              {
+                loader: 'sass-loader' // compiles Sass to CSS
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9' // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009'
+                    })
+                  ]
+                }
               }
-            }]
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -119,14 +124,14 @@ module.exports = {
             // by webpacks internal loaders.
             exclude: [/\.js$/, /\.html$/, /\.json$/],
             options: {
-              name: '[name].[ext]',
-            },
-          },
+              name: '[name].[ext]'
+            }
+          }
           // ** STOP ** Are you adding a new loader?
           // Make sure to add the new loader(s) before the "file" loader.
         ]
       }
-    ]    
+    ]
   },
   plugins: [
     // Minify the code.
@@ -137,20 +142,20 @@ module.exports = {
         // https://github.com/facebookincubator/create-react-app/issues/2376
         // Pending further investigation:
         // https://github.com/mishoo/UglifyJS2/issues/2011
-        comparisons: false,
+        comparisons: false
       },
       output: {
         comments: false,
         // Turned on because emoji and regex is not minified properly using default
         // https://github.com/facebookincubator/create-react-app/issues/2488
-        ascii_only: true,
+        ascii_only: true
       },
-      sourceMap: shouldUseSourceMap,
-    }),
+      sourceMap: shouldUseSourceMap
+    })
   ],
   externals: {
-   'react': 'react',
-   'react-dom': 'reactDOM'
+    react: 'react',
+    'react-dom': 'react-dom'
   },
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
@@ -158,6 +163,6 @@ module.exports = {
     dgram: 'empty',
     fs: 'empty',
     net: 'empty',
-    tls: 'empty',
-  },
+    tls: 'empty'
+  }
 }
