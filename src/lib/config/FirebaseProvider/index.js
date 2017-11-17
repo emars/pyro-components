@@ -6,11 +6,10 @@ class FirebaseProvider extends Component {
     const ctx = {
       firebaseApp: this.props.firebaseApp
     }
-    console.log('gettin child context', ctx)
     return ctx
   }
   render() {
-    return <div>{this.props.children}</div>
+    return this.props.children
   }
 }
 
