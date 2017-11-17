@@ -30,6 +30,14 @@ const AppWithFirebase = () => (
 )
 ```
 
+### Logout Button
+
+TODO
+
+### Notification Center
+
+TODO
+
 ### Auth
 
 ```js
