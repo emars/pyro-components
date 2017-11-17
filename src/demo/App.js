@@ -1,5 +1,5 @@
 import React from 'react'
-import Auth from '../lib/auth/Auth'
+import { Auth, LogoutButton } from '../lib'
 import Typography from 'material-ui/Typography'
 import './firebase'
 
@@ -53,6 +53,21 @@ const App = () => {
             onFail: errorCode => {}
           }}
         />
+      </Demo>
+      <Typography {...{ type: 'title' }}>Logout Button</Typography>
+      <Demo>
+        <LogoutButton
+          {...{
+            onError: () => {
+              alert('failed')
+            },
+            onSuccess: () => {
+              alert('logged out')
+            }
+          }}
+        >
+          Log Out
+        </LogoutButton>
       </Demo>
     </div>
   )
