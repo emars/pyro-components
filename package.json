@@ -1,7 +1,7 @@
 {
-  "name": "pyro-auth",
-  "version": "0.0.2",
-  "description": "Authentication module for the pyro framework",
+  "name": "pyro-components",
+  "version": "0.0.1",
+  "description": "components for the pyro framework",
   "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emars/pyro-auth"
+    "url": "git+https://github.com/emars/pyro-components"
   },
   "author": "Evan Marsland <ERmarsland@gmail.com>",
   "bugs": {
-    "url": "https://github.com/emars/pyro-auth/issues"
+    "url": "https://github.com/emars/pyro-components/issues"
   },
-  "homepage": "https://github.com/emars/pyro-auth#readme",
+  "homepage": "https://github.com/emars/pyro-components#readme",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "7.1.2",
@@ -65,9 +65,9 @@
     "whatwg-fetch": "2.0.3"
   },
   "peerDependencies": {
+    "material-ui": "next",
     "react": "~16.0.0",
     "react-dom": "^16.0.0",
-    "material-ui": "next",
     "recompose": "^0.26.0"
   },
   "jest": {
@@ -97,6 +97,7 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "firebase": "^4.6.2",
     "material-ui": "next",
     "recompose": "^0.26.0"
   }
