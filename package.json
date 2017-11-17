@@ -115,6 +115,8 @@
     "firebase": "^4.6.2",
     "material-ui": "next",
     "prop-types": "^15.6.0",
-    "recompose": "^0.26.0"
+    "react-redux": "^5.0.6",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2"
   }
 }

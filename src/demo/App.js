@@ -1,6 +1,8 @@
 import React from 'react'
-import { Auth, LogoutButton } from '../lib'
+import { connect } from 'react-redux'
+import { Auth, LogoutButton, Notifications } from '../lib'
 import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 import './firebase'
 
 const Demo = ({ children }) => (
@@ -17,6 +19,13 @@ const Demo = ({ children }) => (
     {children}
   </div>
 )
+
+const NotificationDemo = connect(null, dispatch => ({
+  showNotification: () =>
+    dispatch(Notifications.showNotification('This is a notification.'))
+}))(({ showNotification }) => (
+  <Button {...{ onClick: () => showNotification() }}>Show Notification</Button>
+))
 
 const App = () => {
   return (
@@ -68,6 +77,11 @@ const App = () => {
         >
           Log Out
         </LogoutButton>
+      </Demo>
+      <Typography {...{ type: 'title' }}>Notification Center</Typography>
+      <Demo>
+        <Notifications.component />
+        <NotificationDemo />
       </Demo>
     </div>
   )
