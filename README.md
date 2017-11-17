@@ -2,12 +2,39 @@
 
 A big repo containing all of the components for pyro apps.
 
+## Install
+
+```
+yarn add pyro-components
+```
+
+All components must be wrapped in a firebase provider (at the top level).
+
+This is how they access firebase.
+
 ## Components
+
+### Firebase Provider
+```js
+import React from 'react'
+import YourApp from './your-app
+import { FirebaseProvider } from 'pyro-components'
+const firebaseApp = firebase.initializeApp()
+
+const AppWithFirebase = () => (
+    <FirebaseProvider {...{
+        firebaseApp
+    }}>
+        <YourApp />
+    </FirebaseProvider>
+)
+```
 
 ### Auth
 
 ```js
-import { Auth } from 'pyro-auth'
+import React from 'react'
+import { Auth } from 'pyro-components'
 
 // login
 const Login = () => (

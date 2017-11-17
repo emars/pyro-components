@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import firebase from 'firebase'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
+import PropTypes from 'prop-types'
 
 const ErrorMessage = ({ children }) => (
   <Typography
@@ -21,6 +21,9 @@ const ErrorMessage = ({ children }) => (
 )
 
 class Auth extends Component {
+  static contextTypes = {
+    firebaseApp: PropTypes.object
+  }
   state = {
     email: '',
     password: '',
@@ -54,7 +57,7 @@ class Auth extends Component {
   }
 
   handleLogin = loginArgs => {
-    firebase
+    this.context.firebaseApp
       .auth()
       .signInWithEmailAndPassword(loginArgs.email, loginArgs.password)
       .then(user => {
@@ -136,7 +139,7 @@ class Auth extends Component {
       })
     }
 
-    firebase
+    this.context.firebaseApp
       .auth()
       .createUserWithEmailAndPassword(signUpArgs.email, signUpArgs.password)
       .then(user => {
@@ -212,6 +215,8 @@ class Auth extends Component {
   }
 
   render() {
+    console.log(this.context)
+
     let formText
     let formTitle = this.props.isSignUp ? 'Sign Up' : 'Log In'
     if (!this.state.signingIn) {

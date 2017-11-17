@@ -6,5 +6,16 @@
 import React from 'react'
 import reactDOM from 'react-dom'
 import App from './App'
+import FirebaseProvider from '../lib/config/FirebaseProvider'
+import firebaseApp from './firebase'
 
-reactDOM.render(<App />, document.getElementById('root'))
+reactDOM.render(
+  <FirebaseProvider
+    {...{
+      firebaseApp
+    }}
+  >
+    <App />
+  </FirebaseProvider>,
+  document.getElementById('root')
+)

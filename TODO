@@ -1,6 +1,6 @@
 - [x] create + add firebase demo project
 - [x] form should have a loading state + message
 - [x] get the demo working w/ error messages
-- [ ] write documentation for Auth component
-- [ ] publish
-- [ ] push to github
+- [x] write documentation for Auth component
+- [x] publish
+- [x] push to github

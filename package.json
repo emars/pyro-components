@@ -1,6 +1,6 @@
 {
   "name": "pyro-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "components for the pyro framework",
   "main": "build/index.js",
   "scripts": {
@@ -99,6 +99,7 @@
   "dependencies": {
     "firebase": "^4.6.2",
     "material-ui": "next",
+    "prop-types": "^15.6.0",
     "recompose": "^0.26.0"
   }
 }
