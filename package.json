@@ -1,6 +1,6 @@
 {
   "name": "pyro-components",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "components for the pyro framework",
   "main": "build/index.js",
   "scripts": {
