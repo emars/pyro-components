@@ -1,6 +1,6 @@
 {
   "name": "pyro-components",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "components for the pyro framework",
   "main": "build/index.js",
   "scripts": {
@@ -113,10 +113,14 @@
   },
   "dependencies": {
     "firebase": "^4.6.2",
+    "hoist-non-react-statics": "^2.3.1",
     "material-ui": "next",
     "prop-types": "^15.6.0",
     "react-redux": "^5.0.6",
     "recompose": "^0.26.0",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^2.2.3"
   }
 }
