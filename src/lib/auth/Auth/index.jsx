@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import PropTypes from 'prop-types'
+import firebase from 'firebase'
 
 const ErrorMessage = ({ children }) => (
   <Typography
@@ -139,11 +140,40 @@ class Auth extends Component {
       })
     }
 
-    this.context.firebaseApp
-      .auth()
+    const auth = this.context.firebaseApp.auth()
+
+    const user = auth.currentUser
+
+    // link anonymous user
+    if (user && user.isAnonymous) {
+      const credential = firebase.auth.EmailAuthProvider.credential(
+        signUpArgs.email,
+        signUpArgs.password
+      )
+
+      return user
+        .linkWithCredential(credential)
+        .then(newUser => {
+          this.props.onSuccess &&
+            this.props.onSuccess(newUser, { linked: true })
+          this.setState({
+            signingIn: false,
+            errorMessage: false,
+            email: '',
+            password: '',
+            confirmPassword: ''
+          })
+        })
+        .catch(err => {
+          console.error('Linking Error:')
+          console.log(err)
+        })
+    }
+
+    auth
       .createUserWithEmailAndPassword(signUpArgs.email, signUpArgs.password)
       .then(user => {
-        this.props.onSuccess && this.props.onSuccess(user)
+        this.props.onSuccess && this.props.onSuccess(user, { linked: false })
         this.setState({
           signingIn: false,
           errorMessage: false,
@@ -215,8 +245,6 @@ class Auth extends Component {
   }
 
   render() {
-    console.log(this.context)
-
     let formText
     let formTitle = this.props.isSignUp ? 'Sign Up' : 'Log In'
     if (!this.state.signingIn) {
@@ -225,8 +253,6 @@ class Auth extends Component {
       formText = this.props.isSignUp ? 'Signing Up...' : 'Logging In...'
     }
     const showError = !!this.state.errorMessage
-
-    console.log(showError)
 
     return (
       <Paper {...{ style: { width: 400 } }}>

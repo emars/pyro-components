@@ -4,3 +4,11 @@
 - [x] write documentation for Auth component
 - [x] publish
 - [x] push to github
+
+- [x] anonymous auth button in pyro-components
+- [x] update pyro-components auth to link accounts on signup if there is an anonymous user 
+    - [x] onSuccess should pass in a variable if the account was linked 
+- [x] confirmable in pyro-components
+- [x] pulse in pyro-components
+- [ ] react-design-blocks 
+- [ ] release new pyro-components version
