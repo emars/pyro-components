@@ -18,10 +18,11 @@ class LogoutButton extends Component {
       })
   }
   render() {
+    const { onSuccess, onError, ...rest } = this.props
     return (
       <Button
         {...{
-          ...this.props,
+          ...rest,
           onClick: this.handleLogout
         }}
       >

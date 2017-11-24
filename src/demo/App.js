@@ -12,7 +12,7 @@ import {
 } from '../lib'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
-import './firebase'
+import firebase from './firebase'
 
 const Demo = ({ children }) => (
   <div
@@ -89,7 +89,8 @@ const App = () => {
               console.log(user)
               alert(`Signed up user: ${user.uid}`)
             },
-            onFail: errorCode => {}
+            onFail: errorCode => {},
+            defaultFirebaseAppWorkaround: firebase
           }}
         />
       </Demo>

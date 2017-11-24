@@ -151,7 +151,13 @@ class Auth extends Component {
         signUpArgs.password
       )
 
-      return user
+      // workaround for account linking
+      // this.context.firebaseApp can be running an earlier version
+      // this one will use the latest version so it should work
+      const firebaseUser = this.props.defaultFirebaseAppWorkaround.auth()
+        .currentUser
+
+      return firebaseUser
         .linkWithCredential(credential)
         .then(newUser => {
           this.props.onSuccess &&
@@ -255,7 +261,7 @@ class Auth extends Component {
     const showError = !!this.state.errorMessage
 
     return (
-      <Paper {...{ style: { width: 400 } }}>
+      <Paper>
         <AppBar
           {...{
             position: 'static',

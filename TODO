@@ -10,5 +10,5 @@
     - [x] onSuccess should pass in a variable if the account was linked 
 - [x] confirmable in pyro-components
 - [x] pulse in pyro-components
-- [ ] react-design-blocks 
-- [ ] release new pyro-components version
+- [x] react-design-blocks 
+- [x] release new pyro-components version
