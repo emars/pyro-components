@@ -282,7 +282,8 @@ class Auth extends Component {
                 value: this.state.email,
                 onChange: this.handleEmailChange,
                 fullWidth: true,
-                label: 'Email'
+                label: 'Email',
+                type: 'email'
               }}
             />
             <TextField

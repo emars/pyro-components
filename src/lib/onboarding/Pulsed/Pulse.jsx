@@ -52,7 +52,7 @@ const Pulse = styled.div`
   background-color: #2980b9;
   border-radius: 50%;
   position: relative;
-  z-index: 100;
+  z-index: 100000;
   left: 48%;
   cursor: pointer;
 

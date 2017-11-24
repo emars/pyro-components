@@ -36,7 +36,9 @@ const denyAction = () => ({
 })
 
 const initialState = {
-  currentAction: null
+  currentAction: null,
+  title: null,
+  message: null
 }
 
 function* handleConfirmAction(action) {
@@ -87,40 +89,40 @@ export const selectCurrentConfirmableMessage = state =>
   state.confirmable.message
 
 const ConfirmableDialog = ({ open, onYes, onNo, title, message }) => {
+  console.log('RENDERING CONFIRMABLE DIALOG OPEN', open)
   return (
-    <Dialog
-      {...{
-        title: 'Create Project',
-        open,
-        onRequestClose: onNo
-      }}
-    >
-      <DialogTitle>{title || 'Are you sure?'}</DialogTitle>
-      {message && (
+    open && (
+      <Dialog
+        {...{
+          open,
+          onRequestClose: onNo
+        }}
+      >
+        <DialogTitle>{title || 'Are you sure?'}</DialogTitle>
         <DialogContent>
-          <Typography {...{ type: 'body1' }}>{message}</Typography>
+          {message && <Typography {...{ type: 'body1' }}>{message}</Typography>}
         </DialogContent>
-      )}
-      <DialogActions>
-        <Button
-          {...{
-            color: 'primary',
-            onClick: onNo
-          }}
-        >
-          No
-        </Button>
-        ,
-        <Button
-          {...{
-            color: 'primary',
-            onClick: onYes
-          }}
-        >
-          Yes
-        </Button>
-      </DialogActions>
-    </Dialog>
+        <DialogActions>
+          <Button
+            {...{
+              color: 'primary',
+              onClick: onNo
+            }}
+          >
+            No
+          </Button>
+          ,
+          <Button
+            {...{
+              color: 'primary',
+              onClick: onYes
+            }}
+          >
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
+    )
   )
 }
 
